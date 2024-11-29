@@ -1,41 +1,43 @@
-@extends('layouts.app')
+<!-- resources/views/clients/index.blade.php -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clientes</title>
+</head>
+<body>
 
-@section('content')
-<div class="container">
-    <h1>Tarefas</h1>
-    <a href="{{ route('tasks.create') }}" class="btn btn-primary">Nova Tarefa</a>
-    <table class="table mt-3">
-        <thead>
+<h1>Lista de Clientes</h1>
+<a href="{{ route('clients.create') }}">Criar Novo Cliente</a>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Telefone</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach ($clients as $client)
             <tr>
-                <th>Título</th>
-                <th>Descrição</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($tasks as $task)
-            <tr>
-                <td>{{ $task->title }}</td>
-                <td>{{ $task->description }}</td>
+                <td>{{ $client->name }}</td>
+                <td>{{ $client->email }}</td>
+                <td>{{ $client->phone }}</td>
                 <td>
-                    <a href="{{ route('tasks.edit', $task->id) }}" class="btn btn-warning">Editar</a>
-                    <form action="{{ route('tasks.destroy', $task->id) }}" method="POST" style="display:inline;">
+                    <a href="{{ route('clients.edit', $client->id) }}">Editar</a>
+                    <form action="{{ route('clients.destroy', $client->id) }}" method="POST" style="display:inline;">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Excluir</button>
+                        <button type="submit">Excluir</button>
                     </form>
                 </td>
             </tr>
-            @endforeach
-        </tbody>
-    </table>
-</div>
-@endsection
+        @endforeach
+    </tbody>
+</table>
 
-<script>
-    const buttonExclusao = document.querySelector('.btn-danger')
-
-    buttonExclusao.addEventListener('click', (event) => {
-        if (!confirm('Você tem certeza que deseja excluir essa tarefa?')) {}
-    })
-</script>
+</body>
+</html>

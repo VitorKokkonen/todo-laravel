@@ -1,12 +1,12 @@
 <?php
 
-use App\Http\Controllers\tasksController;
+use App\Http\Controllers\ClientsController; // Alterando para o novo controlador
 use Illuminate\Support\Facades\Route;
 
-//Routes tasks 
-Route::get('/', [tasksController::class, 'index'])->name('tasks.index');
-Route::get('/create', [tasksController::class, 'create'])->name('tasks.create');
-Route::post('/store', [tasksController::class, 'store'])->name('tasks.store');
-Route::get('/edit/{task}', [tasksController::class, 'edit'])->name('tasks.edit');
-Route::put('/update/{task}', [tasksController::class, 'update'])->name('tasks.update');
-Route::delete('/destroy/{task}', [tasksController::class, 'destroy'])->name('tasks.destroy');
+// Routes Clients
+Route::get('/', [ClientsController::class, 'index'])->name('clients.index');
+Route::get('/create', [ClientsController::class, 'create'])->name('clients.create');
+Route::post('/store', [ClientsController::class, 'store'])->name('clients.store');
+Route::get('/edit/{client}', [ClientsController::class, 'edit'])->name('clients.edit');
+Route::put('/update/{client}', [ClientsController::class, 'update'])->name('clients.update');
+Route::delete('/destroy/{client}', [ClientsController::class, 'destroy'])->name('clients.destroy');
