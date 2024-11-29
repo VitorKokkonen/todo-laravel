@@ -8,7 +8,7 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="{{ url('/tasks') }}">Gerenciamento de Tarefas</a>
+        <a class="navbar-brand" href="{{ url('/clients') }}">Gerenciamento de clientes</a>
     </nav>
     <div class="container mt-5">
         @yield('content')
